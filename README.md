@@ -9,7 +9,8 @@ A personal time tracking application.
 ## Technologies
 
 ### Back-End
-- Spring Boot
+- Java 8
+- Spring Boot 1.5
 - Spring Data, Hibernate JPA for persistence.
 - Embeddable DB such as HSQLDB as the database.
 
