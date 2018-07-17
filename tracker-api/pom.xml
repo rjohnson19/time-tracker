@@ -9,7 +9,7 @@
     <packaging>jar</packaging>
 
     <name>tracker-api</name>
-    <description>Demo project for Spring Boot</description>
+    <description>Time Tracker API</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
