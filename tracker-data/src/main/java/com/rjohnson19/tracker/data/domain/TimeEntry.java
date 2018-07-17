@@ -1,5 +1,7 @@
 package com.rjohnson19.tracker.data.domain;
 
+import com.rjohnson19.tracker.data.converter.LocalDateTimeConverter;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -14,9 +16,11 @@ public class TimeEntry {
     private String description;
 
     @Column(nullable = false)
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime startTime;
 
     @Column
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime endTime;
 
     @OneToOne

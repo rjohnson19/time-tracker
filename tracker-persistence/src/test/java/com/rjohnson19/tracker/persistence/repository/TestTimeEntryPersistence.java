@@ -44,5 +44,19 @@ public class TestTimeEntryPersistence {
         assertEquals("Should find expected entry.", testProjectEntry.getDescription(), projectEntries.get(0).getDescription());
     }
 
+    @Test
+    public void testFindTopByStartTime() {
+        LocalDateTime oldStartTime = LocalDateTime.now().minusHours(4);
+        final TimeEntry olderEntry = entityManager.persist(new TimeEntry("OLD", oldStartTime,
+                null, null));
+        final TimeEntry newerEntry = entityManager.persist(new TimeEntry("NEW", LocalDateTime.now(),
+                null, null));
+
+        List<TimeEntry> entries = timeEntryRepository.findTop100ByOrderByStartTimeDesc();
+        assertEquals("Should find 2 entries.", 2, entries.size());
+
+        assertEquals("New entry should be first.", newerEntry.getDescription(), entries.get(0).getDescription());
+    }
+
 
 }

@@ -8,4 +8,10 @@ import java.util.List;
 
 public interface TimeEntryRepository extends CrudRepository<TimeEntry, Long> {
     List<TimeEntry> findByProject(Project project);
+
+    /**
+     * Find the top 100 most recent time entries by start time.
+     * @return List of time entries (may be empty)
+     */
+    List<TimeEntry> findTop100ByOrderByStartTimeDesc();
 }
