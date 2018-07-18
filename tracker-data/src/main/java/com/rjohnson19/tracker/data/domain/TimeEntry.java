@@ -92,4 +92,59 @@ public class TimeEntry {
         sb.append('}');
         return sb.toString();
     }
+    public static TimeEntryBuilder builder() {
+        return new TimeEntryBuilder();
+    }
+
+    public static TimeEntryBuilder builder(final TimeEntry timeEntry) {
+        return new TimeEntryBuilder(timeEntry);
+    }
+
+    public static final class TimeEntryBuilder {
+        private Long id;
+        private String description;
+        private LocalDateTime startTime;
+        private LocalDateTime endTime;
+        private Project project;
+
+        private TimeEntryBuilder() {
+        }
+
+        private TimeEntryBuilder(TimeEntry other) {
+            this.id = other.id;
+            this.description = other.description;
+            this.startTime = other.startTime;
+            this.endTime = other.endTime;
+            this.project = other.project;
+        }
+
+        public TimeEntryBuilder id(Long id) {
+            this.id = id;
+            return this;
+        }
+
+        public TimeEntryBuilder description(String description) {
+            this.description = description;
+            return this;
+        }
+
+        public TimeEntryBuilder startTime(LocalDateTime startTime) {
+            this.startTime = startTime;
+            return this;
+        }
+
+        public TimeEntryBuilder endTime(LocalDateTime endTime) {
+            this.endTime = endTime;
+            return this;
+        }
+
+        public TimeEntryBuilder project(Project project) {
+            this.project = project;
+            return this;
+        }
+
+        public TimeEntry build() {
+            return new TimeEntry(id, description, startTime, endTime, project);
+        }
+    }
 }

@@ -62,9 +62,9 @@ public class TimeTrackerServiceImpl implements TimeTrackerService {
     public TimeEntry endTimeEntryById(Long timeEntryId) {
         final TimeEntry timeEntry = resolveMandatoryTimeEntryById(timeEntryId);
         Assert.isNull(timeEntry.getEndTime(), "Specified time entry has already ended!");
-        // TODO: candidate for builder
-        TimeEntry endedEntry = new TimeEntry(timeEntry.getId(), timeEntry.getDescription(), timeEntry.getStartTime(),
-                LocalDateTime.now(), timeEntry.getProject());
+        TimeEntry endedEntry = TimeEntry.builder(timeEntry)
+                .endTime(LocalDateTime.now())
+                .build();
 
         return timeEntryRepository.save(endedEntry);
     }

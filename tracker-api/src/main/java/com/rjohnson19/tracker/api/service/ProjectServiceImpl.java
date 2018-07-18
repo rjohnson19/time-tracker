@@ -32,6 +32,12 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    public Project getProjectById(Long id) {
+        Assert.notNull(id, "id is a mandatory parameter.");
+        return projectRepository.findOne(id);
+    }
+
+    @Override
     public Project addProject(Project project) {
         Assert.notNull(project, "project is a mandatory parameter.");
         if (StringUtils.isEmpty(project.getName())) {

@@ -30,4 +30,11 @@ public interface ProjectService {
      * @return The project that was deleted.
      */
     Project deleteProjectById(Long id);
+
+    /**
+     * Resolve a project by ID.
+     * @param id The ID of the project/
+     * @return The Project or null if no project with the specified ID exists.
+     */
+    Project getProjectById(Long id);
 }
