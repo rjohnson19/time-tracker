@@ -1,10 +1,16 @@
 import { AnyAction, Dispatch } from "redux";
 
+/**
+ * Interface for the Project type.
+ */
 export interface IProject {
   id: number;
   name: string;
 }
 
+/**
+ * Interface for the TimeEntry type.
+ */
 export interface ITimeEntry {
   id?: number;
   description: string;
@@ -13,6 +19,9 @@ export interface ITimeEntry {
   project?: IProject;
 }
 
+/**
+ * Interface for props common to app components.
+ */
 export interface IProps {
     entries: ITimeEntry[],
     dispatch: Dispatch<AnyAction>
