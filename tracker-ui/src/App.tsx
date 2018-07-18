@@ -1,32 +1,25 @@
 import axios from "axios";
 import * as React from "react";
-
+import { addEntries } from "./ActionCreators";
 import "./App.css";
-
-import Table from "./Table";
-import { ITimeEntry } from "./Types";
-
 import logo from "./logo.svg";
-
-type State = Readonly<typeof initialState>;
+import Table from "./Table";
+import { IProps, ITimeEntry } from "./Types";
 
 const RECENT_ENTRIES_PATH = "/entries/recent";
 const API_USERNAME = "user";
 const API_PASSWORD = "trackeruser";
-const emptyEntries: ITimeEntry[] = [];
-const initialState = { entries: emptyEntries };
 
-class App extends React.Component<object, State> {
-  public readonly state: State = initialState;
+class App extends React.Component<IProps> {
   public render() {
-    const {entries} = this.state;
+    const { entries } = this.props;
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Time Tracker</h1>
         </header>
-        
+
         <Table entries={entries} />
       </div>
     );
@@ -51,12 +44,9 @@ class App extends React.Component<object, State> {
   }
 
   private handleEntries(entries: ITimeEntry[]) {
-    this.setState(setEntries(entries));
+    const { dispatch } = this.props;
+    dispatch(addEntries(entries));
   }
 }
-
-const setEntries = (entries: ITimeEntry[]) => (prevState: State) => ({
-  entries
-});
 
 export default App;
