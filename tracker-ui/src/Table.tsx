@@ -18,8 +18,8 @@ class Table extends React.Component<ITableProps, object> {
     return (
       <div className="entry" key={index}>
         <span className="entry-desc">{entry.description}</span>
-        <strong>Start:</strong> {entry.startTime}
-        <strong>End:</strong> {entry.endTime}
+        <span><strong>Start:</strong> {entry.startTime}</span>
+        <span><strong>End:</strong> {entry.endTime}</span>
         {projectLine}
       </div>
     );
