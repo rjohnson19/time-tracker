@@ -26,6 +26,14 @@ public class TimeEntry {
     @OneToOne
     private Project project;
 
+    public TimeEntry(Long id, String description, LocalDateTime startTime, LocalDateTime endTime, Project project) {
+        this.id = id;
+        this.description = description;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.project = project;
+    }
+
     public TimeEntry(String description, LocalDateTime startTime, LocalDateTime endTime, Project project) {
         this.description = description;
         this.startTime = startTime;
@@ -50,6 +58,10 @@ public class TimeEntry {
 
     public LocalDateTime getEndTime() {
         return endTime;
+    }
+
+    public Project getProject() {
+        return project;
     }
 
     @Override
